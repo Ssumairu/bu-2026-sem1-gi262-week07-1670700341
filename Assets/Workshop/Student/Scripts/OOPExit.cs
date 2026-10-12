@@ -9,7 +9,7 @@ namespace Solution
         public Leaderboard leaderboard;
         public string ItemToOpen = "Key";
         public int ItemAmountToOpen = 2;
-
+        
         public override bool Hit()
         {
             bool IsHasItemAmount = mapGenerator.player.inventory.HasItem(ItemToOpen, ItemAmountToOpen);
@@ -25,18 +25,16 @@ namespace Solution
                 leaderboard.RecordScore(new PlayerScore(playerName, scorereceived));
                 leaderboard.PrintScores();
                 leaderboard.ShowleaderBoard();
-
+    
                 return true;
             }
-            else
-            {
+            else {
                 Debug.Log("Need Item " + ItemToOpen + " to Open");
                 return false;
             }
         }
         //Logic CalculateScore
-        int CalculateScore()
-        {
+        int CalculateScore() {
             int score = (int)((mapGenerator.player.energy * 100) / Time.time);
             return score;
         }
